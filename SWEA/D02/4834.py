@@ -1,3 +1,7 @@
+# Programming - Intermediate
+# 파이썬 SW문제해결 기본 - LIST1
+# 숫자카드
+
 T = int(input())
 
 for t in range(T):
@@ -10,7 +14,7 @@ for t in range(T):
     max_count = 0
     # 가장 많은 카드를 찾아내 max_num에 해당 숫자를, max_count에 해당 숫자 카드의 수를 저장
     for i in range(len(num_list)):
-        if num_list[i] > max_count or (num_list[i] == max_count and i > max_num):
+        if num_list[i] >= max_count:
             max_num = i
             max_count = num_list[i]
     print(f'#{t+1} {max_num} {max_count}')

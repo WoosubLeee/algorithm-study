@@ -1,3 +1,7 @@
+# Programming - Intermediate
+# 파이썬 SW문제해결 기본 - LIST1
+# min max
+
 T = int(input())
 
 for t in range(T):
