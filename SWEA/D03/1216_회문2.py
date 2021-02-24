@@ -4,10 +4,31 @@ def is_palindrome(word):
     elif word[0] == word[-1]:
         return is_palindrome(word[1:-1])
 
+# # 1
+# def find_palindrome(line, length):
+#     for i in range(100):
+#         for j in range(101-length):
+#             if is_palindrome(line[i][j:j+length]):
+#                 return True
+#             else:
+#                 line_i = ''
+#                 for k in range(100):
+#                     line_i += lines[k][i]
+#                 for k in range(101-length):
+#                     if is_palindrome(line_i[k:k+length]):
+#                         return True
+#
+#
+# for _ in range(10):
+#     tc = int(input())
+#
+#     lines = [input() for _ in range(100)]
+#     for i in range(100, 0, -1):
+#         if find_palindrome(lines, i):
+#             max_length = i
+#             break
 
-for _ in range(10):
-    tc = int(input())
-
+    # 2
     max_length = 0
     lines = []
     for _ in range(100):
