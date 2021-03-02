@@ -1,8 +1,26 @@
-def ip(x):
+def is_number(x):
+    operator = ['+', '*']
+    bracket = ['(', ')']
+    if x not in operator + bracket:
+        return True
+
+
+def icp(x):
     if x == '*':
         return 2
     elif x == '+':
         return 1
+    elif x == '(':
+        return 3
+
+
+def isp(x):
+    if x == '*':
+        return 2
+    elif x == '+':
+        return 1
+    elif x == '(':
+        return 0
 
 
 def calc(operator, y, x):
@@ -17,11 +35,17 @@ for tc in range(1, 11):
     stack = []
     result = ''
     for i in input():
-        if i not in ['+', '*']:
+        if is_number(i):
             result += i
+        elif i == ')':
+            while True:
+                top = stack.pop()
+                if top == '(':
+                    break
+                result += top
         else:
             while stack:
-                if ip(i) > ip(stack[-1]):
+                if icp(i) > isp(stack[-1]):
                     stack.append(i)
                     break
                 else:
@@ -32,7 +56,7 @@ for tc in range(1, 11):
         result += stack.pop()
 
     for i in result:
-        if i not in ['+', '*']:
+        if is_number(i):
             stack.append(i)
         else:
             stack.append(calc(i, stack.pop(), stack.pop()))
