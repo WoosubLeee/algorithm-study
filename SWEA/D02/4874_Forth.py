@@ -18,10 +18,9 @@ for tc in range(1, T+1):
                     stack.append(stack.pop()*top)
                 else:
                     stack.append(stack.pop() // top)
+        if len(stack) > 1:
+            raise Exception
     except:
         print(f'#{tc} error')
         continue
-    if len(stack) > 1:
-        print(f'#{tc} error')
-    else:
-        print(f'#{tc} {stack[0]}')
+    print(f'#{tc} {stack[0]}')
