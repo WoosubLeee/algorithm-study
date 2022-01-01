@@ -1,12 +1,6 @@
 N = int(input())
-
-count = -6
-if N == 1:
-    print(1)
-else:
-    count = 1
-    for i in range(N):
-        count += i*6
-        if N <= count:
-            print(i+1)
-            break
+x = 1
+while N > 1:
+    x += 1
+    N -= 6*(x-1)
+print(x)
