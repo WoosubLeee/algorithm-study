@@ -1,19 +1,18 @@
-def get_num(floor, room):
-    if memo[floor][room-1]:
-        return memo[floor][room-1]
-    else:
-        if floor == 0 or room == 1:
-            memo[floor][room-1] = room
-            return room
-        else:
-            memo[floor][room-1] = get_num(floor, room-1) + get_num(floor-1, room)
-            return memo[floor][room-1]
+for _ in range(int(input())):
+    K = int(input())
+    N = int(input())
 
+    floor = list(range(N+1))
 
-memo = [[0]*14 for _ in range(15)]
-T = int(input())
+    # 1
+    # for k in range(1, K):
+    #     floor.append([])
+    #     for n in range(N):
+    #         floor[k].append(sum(floor[k-1][:n+1]))
+    # print(sum(floor[K-1]))
 
-for _ in range(T):
-    k = int(input())
-    n = int(input())
-    print(get_num(k, n))
+    # 2
+    for k in range(K):
+        for n in range(1, N+1):
+            floor[n] += floor[n-1]
+    print(floor[N])
