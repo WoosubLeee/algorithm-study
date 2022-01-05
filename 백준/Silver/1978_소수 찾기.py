@@ -1,12 +1,19 @@
-N = int(input())
+input()
+
 nums = list(map(int, input().split()))
-count = 0
+max_num = max(nums)
+
+isPrime = [1 for _ in range(max_num+1)]
+isPrime[1] = 0
+for n in range(2, max_num//2 + 1):
+    if isPrime[n]:
+        x = 2
+        while x*n <= max_num:
+            isPrime[x*n] = 0
+            x += 1
+
+result = 0
 for num in nums:
-    if num == 1 or (num != 2 and num % 2 == 0):
-        continue
-    for i in range(1, num // 4):
-        if not num % (2*i + 1):
-            break
-    else:
-        count += 1
-print(count)
+    if isPrime[num]:
+        result += 1
+print(result)
