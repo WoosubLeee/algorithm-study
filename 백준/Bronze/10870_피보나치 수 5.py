@@ -1,9 +1,6 @@
-def fibo(num):
-    if num <= 1:
-        return num
-    else:
-        return fibo(num-1) + fibo(num-2)
+def fib(n):
+    if n <= 1:
+        return n
+    return fib(n-1) + fib(n-2)
 
-
-n = int(input())
-print(fibo(n))
+print(fib(int(input())))
