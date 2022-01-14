@@ -1,19 +1,13 @@
-def move(n, start, end, left):
+def move(n, now, goal, left, result):
     if n == 1:
-        print(start, end)
+        result[0] += 1
+        result.append(f'{now} {goal}')
     else:
-        move(n-1, start, left, end)
-        print(start, end)
-        move(n-1, left, end, start)
+        move(n-1, now, left, goal, result)
+        move(1, now, goal, left, result)
+        move(n-1, left, goal, now, result)
 
 
-def count(n):
-    if n == 1:
-        return 1
-    else:
-        return 2 ** (n-1) + count(n-1)
-
-
-N = int(input())
-print(count(N))
-move(N, 1, 3, 2)
+result = [0]
+move(int(input()), 1, 3, 2, result)
+print('\n'.join(map(str, result)))
