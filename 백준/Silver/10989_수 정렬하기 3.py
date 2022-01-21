@@ -1,9 +1,12 @@
-from sys import stdout
+import sys
 
 
-nums = [0]*10001
-for _ in range(int(input())):
-    nums[int(input())] += 1
-for i in range(10001):
-    for j in range(nums[i]):
-        stdout.write(f'{i}\n')
+N = int(sys.stdin.readline())
+counts = [0]*10001
+
+for i in range(N):
+    counts[int(sys.stdin.readline())] += 1
+
+for i in range(1, 10001):
+    for _ in range(counts[i]):
+        print(i)
