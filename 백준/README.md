@@ -144,4 +144,8 @@
 | 2    | 2751      |        | O          |        | Quick             |
 | 3    | 10989     | O      |            |        | Counting          |
 | 4    | 2108      |        |            | O      | Counting          |
+| 5    | 1427      | O      |            |        | Counting          |
+| 6    | 11650     |        | (O)        |        | Heap              |
+| 7    | 11651     | O      |            |        | Quick             |
+| 8    | 1181      |        |            | O      | Quick             |
 
