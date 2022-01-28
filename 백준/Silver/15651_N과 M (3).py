@@ -1,13 +1,24 @@
-N, M = map(int, input().split())
+N, M = map(int, input().split(' '))
 
-# 1
-# def do(n):
-#     if n == M:
-#         print(*nums)
+
+# # 1
+# def make():
+#     if len(nums) == M:
+#         print(' '.join(nums))
 #     else:
 #         for i in range(1, N+1):
-#             nums.append(i)
-#             do(n+1)
+#             nums.append(str(i))
+#             make()
 #             nums.pop()
+#
+#
 # nums = []
-# do(0)
+# make()
+
+
+# 2
+import itertools
+
+
+nums = list(map(str, range(1, N+1)))
+print('\n'.join(list(map(' '.join, itertools.product(nums, repeat=M)))))
