@@ -1,21 +1,24 @@
-def calc(n):
-    global count
-    if n == N:
-        count += 1
+def calc(i):
+    if i == N:
+        global result
+        result += 1
     else:
-        for i in range(N):
-            for pick in picked:
-                if i == pick[1] or abs((n-pick[0]) / (i-pick[1])) == 1:
-                    break
-            else:
-                picked.append([n, i])
-                calc(n+1)
-                picked.pop()
+        for j in range(N):
+            if not ys[j]:
+                for queen in stack:
+                    if abs((i - queen[0]) / (j - queen[1])) == 1:
+                        break
+                else:
+                    ys[j] = 1
+                    stack.append([i, j])
+                    calc(i+1)
+                    stack.pop()
+                    ys[j] = 0
 
 
 N = int(input())
-
-picked = []
-count = 0
+ys = [0]*N
+stack = []
+result = 0
 calc(0)
-print(count)
+print(result)
