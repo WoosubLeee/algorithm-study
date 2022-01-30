@@ -1,36 +1,32 @@
-def calc(n):
-    global result, max_result, min_result
-    if n == N:
-        if result > max_result:
-            max_result = result
-        if result < min_result:
-            min_result = result
+def put(num, idx):
+    global max_result, min_result
+    if idx == N:
+        if num > max_result:
+            max_result = num
+        if num < min_result:
+            min_result = num
     else:
         for i in range(4):
-            if opers[i]:
-                opers[i] -= 1
-                temp = result
+            if operators[i] > 0:
+                operators[i] -= 1
                 if i == 0:
-                    result += nums[n]
+                    put(num+nums[idx], idx+1)
                 elif i == 1:
-                    result -= nums[n]
+                    put(num-nums[idx], idx+1)
                 elif i == 2:
-                    result *= nums[n]
+                    put(num*nums[idx], idx+1)
                 else:
-                    if result < 0:
-                        result = -(-result // nums[n])
+                    if num >= 0:
+                        put(num//nums[idx], idx+1)
                     else:
-                        result //= nums[n]
-                calc(n + 1)
-                opers[i] += 1
-                result = temp
+                        put(-(-num//nums[idx]), idx+1)
+                operators[i] += 1
 
 
 N = int(input())
-nums = list(map(int, input().split()))
-opers = list(map(int, input().split()))
+nums = list(map(int, input().split(' ')))
+operators = list(map(int, input().split(' ')))
 
-result, max_result, min_result = nums[0], -1000000000, 1000000000
-calc(1)
-print(max_result)
-print(min_result)
+max_result, min_result = -1000000000, 1000000000
+put(nums[0], 1)
+print(f'{max_result}\n{min_result}')
