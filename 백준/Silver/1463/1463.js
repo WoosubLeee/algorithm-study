@@ -7,36 +7,40 @@ const rl = readline.createInterface({
 });
 
 rl.on('line', line => {
-  const calc = () => {
-    let newQueue;
+  const N = parseInt(line);
 
+  let queue = [N];
+  let visited = new Set();
+  let count = 0;
+
+  const calc = () => {
+    let newqueue;
+    
     while (true) {
-      newQueue = [];
+      newqueue = [];
       for (const num of queue) {
         if (num === 1) {
           return;
         }
+
         if (num % 3 === 0 && !visited.has(parseInt(num / 3))) {
-          newQueue.push(parseInt(num / 3));
+          newqueue.push(parseInt(num / 3));
+          visited.add(parseInt(num / 3));
         }
         if (num % 2 === 0 && !visited.has(parseInt(num / 2))) {
-          newQueue.push(parseInt(num / 2));
+          newqueue.push(parseInt(num / 2));
+          visited.add(parseInt(num / 2));
         }
         if (!visited.has(num - 1)) {
-          newQueue.push(num - 1);
+          newqueue.push(num - 1);
+          visited.add(num - 1);
         }
       }
-      queue = newQueue;
+      queue = newqueue;
       count++;
     }
   }
 
-  const N = parseInt(line);
-  
-  let queue = [N];
-  let visited = new Set();
-  let count = 0;
-  
   calc();
   console.log(count);
 });
