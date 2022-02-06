@@ -20,6 +20,14 @@ for i in range(1, N):
                 l = m + 1
         else:
             counts[l] = i
+            # 이 부분에서
+            # if nums[i] < nums[counts[l]]:
+            #     counts[l] = i
+            # 처럼 대소를 비교해야한다고 생각했으나
+            # 이진 탐색 시 탐색이 멈추는 자리(l == r인 자리)는
+            # nums[counts[l-1]]이 nums[i]보다 작고,
+            # nums[counts[l]]이 nums[i]보다 큰 자리이기 때문에
+            # 대소를 비교할 필요가 없다
 print(len(counts))
 
 
