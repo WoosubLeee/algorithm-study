@@ -1,7 +1,7 @@
 N = int(input())
-time = list(map(int, input().split()))
-time.sort()
-total = 0
+times = list(map(int, input().split(' ')))
+times.sort()
+result = 0
 for i in range(N):
-    total += time[i]*(N-i)
-print(total)
+    result += times[i] * (N-i)
+print(result)
