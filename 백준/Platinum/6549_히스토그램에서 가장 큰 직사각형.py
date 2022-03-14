@@ -39,16 +39,7 @@ import sys
 
 
 # 스택
-def calc_area(idx):
-    global result
-
-    while stack and histogram[stack[-1]] >= histogram[idx]:
-        top = stack.pop()
-
-        width = idx-top if stack else idx
-
-        area = width * histogram[top]
-        result = max(result, area)
+import sys
 
 
 while True:
@@ -56,27 +47,21 @@ while True:
     if len(line) == 1:
         break
 
-    n = line[0]
     histogram = line[1:]
 
     result = 0
-    stack = []
-    for i in range(n):
-        while stack and histogram[stack[-1]] >= histogram[i]:
-            height = histogram[stack.pop()]
+    histogram.insert(0, -1)
+    histogram.append(0)
+    stack = [0]
+    for i in range(1, len(histogram)):
+        height = histogram[i]
 
-            width = i - stack[-1] - 1 if stack else i
+        while histogram[stack[-1]] >= height:
+            top = stack.pop()
+            width = i - stack[-1] - 1
 
-            area = width * height
-            result = max(result, area)
+            result = max(result, histogram[top]*width)
+
         stack.append(i)
-
-    while stack:
-        height = histogram[stack.pop()]
-
-        width = n - stack[-1] - 1 if stack else n
-
-        area = width * height
-        result = max(result, area)
 
     print(result)
